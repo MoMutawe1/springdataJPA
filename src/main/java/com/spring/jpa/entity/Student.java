@@ -1,4 +1,4 @@
-package entity;
+package com.spring.jpa.entity;
 
 import javax.persistence.*;
 
@@ -56,6 +56,13 @@ public class Student {
 
     public Student(Long id, String firstName, String lastName, String email, Integer age) {
         this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+    }
+
+    public Student(String firstName, String lastName, String email, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
