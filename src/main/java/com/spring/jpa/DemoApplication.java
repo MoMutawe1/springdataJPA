@@ -1,6 +1,7 @@
 package com.spring.jpa;
 
 import com.github.javafaker.Faker;
+import com.spring.jpa.entity.Book;
 import com.spring.jpa.entity.Student;
 import com.spring.jpa.entity.StudentIdCard;
 import com.spring.jpa.repo.StudentIdCardRepository;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootApplication
@@ -35,6 +37,12 @@ public class DemoApplication {
 					email,
 					faker.number().numberBetween(16, 62));
 
+			student.addBook(new Book("Clean Code", LocalDateTime.now()));
+
+			student.addBook(new Book("Think and Grow Rich", LocalDateTime.now().minusDays(4)));
+
+			student.addBook(new Book("Spring Data JPA", LocalDateTime.now().minusYears(1)));
+
 			StudentIdCard studentIdCard= new StudentIdCard(
 					"123456789",
 					student);
@@ -52,6 +60,7 @@ public class DemoApplication {
 			/*PageRequest pageRequest = PageRequest.of(0,5, Sort.by("firstName").ascending());
 			Page<Student> page = studentRepository.findAll(pageRequest);
 			System.out.println(page);*/
+
 		};
 
 			/*
