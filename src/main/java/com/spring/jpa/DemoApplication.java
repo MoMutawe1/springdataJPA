@@ -49,7 +49,13 @@ public class DemoApplication {
 
 			studentIdCardRepository.save(studentIdCard);
 
-			studentRepository.findById(1L).ifPresent(System.out::println);
+			studentRepository.findById(1L).ifPresent(s -> {
+				System.out.println("fetch book lazy..");
+				List<Book> books = student.getBooks();
+				books.forEach(book -> {
+					System.out.println(s.getFirstName() + " borrowed " + book.getBookName());
+				});
+			});
 
 			studentIdCardRepository.findById(1L).ifPresent(System.out::println);
 
